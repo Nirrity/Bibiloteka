@@ -1,0 +1,26 @@
+<!DOCTYPE HTML>
+<html>
+<head> 
+    <title>Bibiloteka-wypozycz</title> 
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+
+</head>
+<body>
+<table class="table table-striped">
+  <tr>
+    <th>Book</th>
+    <th>Authors</th>
+    <th>Rent</th>
+  </tr>
+  <tr th:each="book,iterStat : ${bookList}">
+    <td th:text="${book.title}"></td>
+    <td th:text="${book.authors}"></td>
+    <td th:text="${book.rentById}"></td>
+    <td th:switch="${book.rentById}">
+        <a th:case="-1" th:href="@{/rent(id=${book.id})}">Rent</a>
+        <p th:case="*">Ksiazka wypozyczona</p>
+    </td>
+  </tr>
+</table>
+</body>
+</html>
